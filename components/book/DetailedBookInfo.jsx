@@ -120,48 +120,110 @@ export default function DetailedBookInfo() {
         </div>
       </div>
 
-      <div className="editorial-spacing-md bg-parchment relative">
+      <div className="editorial-spacing-md bg-parchment paper-texture relative overflow-hidden">
         <div className="absolute inset-x-0 top-0 h-px bg-secondary-300" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-secondary-300" />
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
-          <motion.div
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-            whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <span className="font-crimson text-xs tracking-[0.3em] uppercase text-secondary-500">
-              What You Will Learn
-            </span>
-            <h2 className="font-crimson text-3xl md:text-4xl font-bold text-secondary-900 mt-4">
-              Key Topics
-            </h2>
-            <DividerLine variant="ornament" className="mt-6 mx-auto max-w-xs" />
-          </motion.div>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute left-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
+          <div className="absolute right-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
+        </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {bookInfo.keyTopics.map((topic, index) => {
-              const Icon = topicIcons[topic.title] || BookOpen;
-              return (
-                <motion.div
-                  key={topic.title}
-                  initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
-                  whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <EditorialCard
-                    title={topic.title}
-                    icon={Icon}
-                    showPageCurl={false}
-                  >
-                    <p className="text-secondary-600">{topic.description}</p>
-                  </EditorialCard>
-                </motion.div>
-              );
-            })}
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 relative">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <motion.div
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+              whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-4 lg:sticky lg:top-32 text-center lg:text-left"
+            >
+              <div className="flex items-center justify-center lg:justify-start gap-4 mb-6">
+                <span className="w-12 h-px bg-secondary-300" />
+                <span className="font-crimson text-xs tracking-[0.35em] uppercase text-secondary-500">
+                  What You Will Learn
+                </span>
+                <span className="w-12 h-px bg-secondary-300" />
+              </div>
+
+              <h2 className="font-crimson text-3xl md:text-4xl font-bold text-secondary-900">
+                Key Topics
+              </h2>
+
+              <p className="mt-4 text-secondary-600 leading-relaxed">
+                {bookInfo.keyTopics.length} themes that shape the realities of a
+                professional tennis journey.
+              </p>
+
+              <DividerLine
+                variant="ornament"
+                className="mt-8 mx-auto lg:mx-0 max-w-xs"
+              />
+            </motion.div>
+
+            <div className="lg:col-span-8">
+              <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
+                {bookInfo.keyTopics.map((topic, index) => {
+                  const Icon = topicIcons[topic.title] || BookOpen;
+                  const topicNumber = String(index + 1).padStart(2, "0");
+
+                  return (
+                    <motion.div
+                      key={topic.title}
+                      initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
+                      whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.08 }}
+                    >
+                      <EditorialCard
+                        variant="elevated"
+                        pageCurl
+                        className="group h-full transition-all duration-300 border-secondary-200 hover:border-primary-300 hover:shadow-xl hover:shadow-secondary-300/30 hover:-translate-y-1"
+                      >
+                        <div className="relative p-8 h-full">
+                          <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary-500/40 transition-colors duration-300 group-hover:bg-primary-500/70" />
+
+                          <span
+                            aria-hidden="true"
+                            className="absolute right-6 top-6 font-crimson text-6xl text-secondary-200/60 leading-none select-none transition-colors duration-300 group-hover:text-secondary-200/80"
+                          >
+                            {topicNumber}
+                          </span>
+
+                          <div className="pl-5">
+                            <div className="flex items-start gap-5 pr-12">
+                              <div className="shrink-0">
+                                <div className="w-12 h-12 rotate-45 border border-secondary-300 bg-paper flex items-center justify-center transition-all duration-300 group-hover:border-primary-400 group-hover:bg-parchment">
+                                  <Icon className="-rotate-45 w-5 h-5 text-primary-600" />
+                                </div>
+                              </div>
+
+                              <div className="min-w-0">
+                                <p className="font-crimson text-xs tracking-[0.35em] uppercase text-secondary-500">
+                                  Topic {topicNumber}
+                                </p>
+                                <h3 className="mt-2 font-crimson text-2xl font-semibold text-secondary-900 leading-tight">
+                                  {topic.title}
+                                </h3>
+                              </div>
+                            </div>
+
+                            <DividerLine
+                              variant="stitched"
+                              className="my-6 md:my-6 opacity-40"
+                            />
+
+                            <p className="text-secondary-700 leading-relaxed">
+                              {topic.description}
+                            </p>
+                          </div>
+                        </div>
+                      </EditorialCard>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

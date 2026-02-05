@@ -34,37 +34,45 @@ const Hero = forwardRef(function Hero(props, ref) {
       ref={ref}
       className="relative min-h-screen flex items-center overflow-hidden bg-cream paper-texture"
     >
-      <FloatingBalls
-        balls={[
-          {
-            size: 35,
-            initialX: "6%",
-            initialY: "30%",
-            scrollSpeed: 0.25,
-            floatDuration: 5,
-            delay: 0,
-            cursorInfluence: 0.8,
-          },
-          {
-            size: 28,
-            initialX: "94%",
-            initialY: "25%",
-            scrollSpeed: 0.35,
-            floatDuration: 4,
-            delay: 0.5,
-            cursorInfluence: 0.6,
-          },
-          {
-            size: 22,
-            initialX: "8%",
-            initialY: "75%",
-            scrollSpeed: 0.4,
-            floatDuration: 3.5,
-            delay: 1,
-            cursorInfluence: 0.7,
-          },
-        ]}
-      />
+      <motion.div
+        initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
+        className="absolute inset-0 pointer-events-none"
+      >
+        <FloatingBalls
+          balls={[
+            {
+              size: 35,
+              initialX: "6%",
+              initialY: "30%",
+              scrollSpeed: 0.25,
+              floatDuration: 5,
+              delay: 0,
+              cursorInfluence: 0.8,
+            },
+            {
+              size: 28,
+              initialX: "94%",
+              initialY: "25%",
+              scrollSpeed: 0.35,
+              floatDuration: 4,
+              delay: 0.5,
+              cursorInfluence: 0.6,
+            },
+            {
+              size: 22,
+              initialX: "40%",
+              initialY: "15%",
+              scrollSpeed: 0.4,
+              floatDuration: 3.5,
+              delay: 1,
+              cursorInfluence: 0.7,
+            },
+          ]}
+        />
+      </motion.div>
 
       <motion.div
         style={

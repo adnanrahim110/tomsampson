@@ -37,9 +37,9 @@ export default function TravelingRacket({ heroRef, destinationRef }) {
         destinationOffsetX: 0,
         destinationOffsetY: -30,
         startRotation: 25,
-        endRotation: 25,
+        endRotation: 30,
         startScale: 1,
-        endScale: 0.7,
+        endScale: 0.75,
         heroTiltUntilProgress: 0.25,
       };
 
@@ -54,6 +54,7 @@ export default function TravelingRacket({ heroRef, destinationRef }) {
         yPercent: 0,
         rotation: travelConfig.startRotation,
         scale: travelConfig.startScale,
+        opacity: 0,
         transformOrigin: "100% 0%",
         zIndex: 1,
         force3D: true,
@@ -84,6 +85,23 @@ export default function TravelingRacket({ heroRef, destinationRef }) {
         ease: "power3.out",
       });
 
+      let revealTween = null;
+      let hasRevealed = false;
+
+      const killQuickTo = (quickToFn) => {
+        if (!quickToFn) return;
+
+        if (typeof quickToFn.kill === "function") {
+          quickToFn.kill();
+          return;
+        }
+
+        const tween = quickToFn.tween;
+        if (tween && typeof tween.kill === "function") {
+          tween.kill();
+        }
+      };
+
       const getRacketSize = () => {
         const rect = racket.getBoundingClientRect();
         return { width: rect.width, height: rect.height };
@@ -113,6 +131,7 @@ export default function TravelingRacket({ heroRef, destinationRef }) {
         setY(startY);
         setRotation(travelConfig.startRotation);
         setScale(travelConfig.startScale);
+        gsap.set(racket, { opacity: 1 });
         racket.style.visibility = "visible";
 
         return () => {
@@ -121,9 +140,11 @@ export default function TravelingRacket({ heroRef, destinationRef }) {
             floatTweenRef.current = null;
           }
 
-          rotateXTo.kill();
-          rotateYTo.kill();
+          killQuickTo(rotateXTo);
+          killQuickTo(rotateYTo);
+          if (revealTween) revealTween.kill();
           gsap.set(racketInner, { clearProps: "rotateX,rotateY,y" });
+          gsap.set(racket, { opacity: 0 });
           racket.style.visibility = "hidden";
         };
       }
@@ -224,6 +245,17 @@ export default function TravelingRacket({ heroRef, destinationRef }) {
 
         if (racket.style.visibility !== "visible") {
           racket.style.visibility = "visible";
+          if (!hasRevealed) {
+            hasRevealed = true;
+            if (revealTween) revealTween.kill();
+            revealTween = gsap.to(racket, {
+              opacity: 1,
+              duration: 0.8,
+              ease: "power2.out",
+              delay: 0.25,
+              overwrite: true,
+            });
+          }
         }
       };
 
@@ -270,10 +302,12 @@ export default function TravelingRacket({ heroRef, destinationRef }) {
           floatTweenRef.current = null;
         }
 
-        rotateXTo.kill();
-        rotateYTo.kill();
+        killQuickTo(rotateXTo);
+        killQuickTo(rotateYTo);
+        if (revealTween) revealTween.kill();
 
         gsap.set(racketInner, { clearProps: "rotateX,rotateY,y" });
+        gsap.set(racket, { opacity: 0 });
         racket.style.visibility = "hidden";
       };
     });
