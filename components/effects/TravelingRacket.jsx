@@ -31,15 +31,15 @@ export default function TravelingRacket({ heroRef, destinationRef }) {
       ).matches;
 
       const travelConfig = {
-        startMarginX: 40,
+        startMarginX: 32,
         startMarginY: -250,
         destinationViewportY: 0.7,
         destinationOffsetX: 0,
-        destinationOffsetY: 0,
+        destinationOffsetY: -30,
         startRotation: 25,
-        endRotation: 20,
+        endRotation: 25,
         startScale: 1,
-        endScale: 0.5,
+        endScale: 0.7,
         heroTiltUntilProgress: 0.25,
       };
 

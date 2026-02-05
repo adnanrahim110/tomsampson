@@ -5,7 +5,6 @@ import Button from "@/components/ui/Button";
 import { Book3D } from "@/components/ui/editorial";
 import MagneticElement from "@/components/ui/MagneticElement";
 import { authorBio, bookInfo } from "@/constants";
-import { ChevronDown } from "lucide-react";
 import {
   motion,
   useReducedMotion,
@@ -29,8 +28,6 @@ const Hero = forwardRef(function Hero(props, ref) {
     [0, 0.6],
     prefersReducedMotion ? [0, 0] : [0, 80],
   );
-  const bookY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
     <section
@@ -92,7 +89,7 @@ const Hero = forwardRef(function Hero(props, ref) {
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="font-crimson text-5xl sm:text-6xl lg:text-7xl xl:text-[4.5rem] font-bold text-secondary-900 leading-[0.9] tracking-tight mb-8"
+              className="font-crimson text-5xl sm:text-6xl lg:text-7xl xl:text-[4.5rem] font-bold text-secondary-900 leading-[0.9] tracking-tight mb-6"
             >
               <span className="inline">
                 {bookInfo.title.split(" ").slice(0, 2).join(" ")}
@@ -107,7 +104,7 @@ const Hero = forwardRef(function Hero(props, ref) {
               initial={prefersReducedMotion ? {} : { scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="flex items-center gap-4 mb-8 origin-left"
+              className="flex items-center gap-4 mb-5 origin-left"
             >
               <span className="w-16 h-0.5 bg-primary-500" />
               <span className="font-crimson text-primary-400 text-2xl">✦</span>
@@ -118,7 +115,7 @@ const Hero = forwardRef(function Hero(props, ref) {
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="font-crimson text-xl sm:text-2xl italic text-secondary-600 mb-6"
+              className="font-crimson text-xl sm:text-2xl italic text-secondary-600 mb-2"
             >
               {bookInfo.subtitle}
             </motion.p>
@@ -127,7 +124,7 @@ const Hero = forwardRef(function Hero(props, ref) {
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="text-base sm:text-lg text-secondary-600 leading-relaxed mb-10"
+              className="text-base sm:text-lg text-secondary-800 leading-relaxed mb-10 max-w-lg"
             >
               {bookInfo.shortDescription}
             </motion.p>
@@ -144,7 +141,13 @@ const Hero = forwardRef(function Hero(props, ref) {
                 </Button>
               </MagneticElement>
               <MagneticElement strength={0.15}>
-                <Button href="/book" variant="outline" size="lg" showArrow>
+                <Button
+                  href="/book"
+                  variant="outline"
+                  size="lg"
+                  showArrow
+                  className="backdrop-blur-xs"
+                >
                   Read an Excerpt
                 </Button>
               </MagneticElement>
