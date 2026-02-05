@@ -39,7 +39,7 @@ export default function TravelingRacket({ heroRef, destinationRef }) {
         startRotation: 25,
         endRotation: 20,
         startScale: 1,
-        endScale: 0.55,
+        endScale: 0.5,
         heroTiltUntilProgress: 0.25,
       };
 
@@ -68,7 +68,12 @@ export default function TravelingRacket({ heroRef, destinationRef }) {
       const setX = gsap.quickSetter(racket, "x", "px");
       const setY = gsap.quickSetter(racket, "y", "px");
       const setRotation = gsap.quickSetter(racket, "rotation", "deg");
-      const setScale = gsap.quickSetter(racket, "scale");
+      const setScaleX = gsap.quickSetter(racket, "scaleX");
+      const setScaleY = gsap.quickSetter(racket, "scaleY");
+      const setScale = (value) => {
+        setScaleX(value);
+        setScaleY(value);
+      };
 
       const rotateXTo = gsap.quickTo(racketInner, "rotateX", {
         duration: 0.6,
