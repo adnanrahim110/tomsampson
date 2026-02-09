@@ -148,6 +148,22 @@
     font-style: normal;
   }
 
+  @media (max-width: 639px) {
+    .drop-cap::first-letter,
+    .drop-cap-dark::first-letter {
+      font-size: 3.5rem;
+      padding-right: 0.35rem;
+      padding-top: 0.2rem;
+    }
+
+    .pull-quote::before,
+    .pull-quote-dark::before {
+      left: -0.5rem;
+      top: -0.75rem;
+      font-size: 4.5rem;
+    }
+  }
+
   /* Editorial rule lines */
   .rule-line {
     height: 1px;
@@ -206,19 +222,19 @@
 @layer utilities {
 
   .editorial-spacing-sm {
-    @apply py-16 md:py-24;
+    @apply py-12 sm:py-16 md:py-24;
   }
 
   .editorial-spacing-md {
-    @apply py-24 md:py-32;
+    @apply py-16 sm:py-24 md:py-32;
   }
 
   .editorial-spacing-lg {
-    @apply py-32 md:py-48;
+    @apply py-20 sm:py-32 md:py-48;
   }
 
   .editorial-spacing-xl {
-    @apply py-40 md:py-56;
+    @apply py-24 sm:py-40 md:py-56;
   }
 
   .grid-editorial {

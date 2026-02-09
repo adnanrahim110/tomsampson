@@ -63,7 +63,8 @@ const Ball = ({
   scrollYProgress,
   pointerX,
   pointerY,
-  animate = true,
+  enableMotion = true,
+  enableLoop = true,
 }) => {
   const scrollY = useTransform(
     scrollYProgress,
@@ -90,24 +91,24 @@ const Ball = ({
       style={{
         left: initialX,
         top: initialY,
-        y: animate ? scrollY : 0,
-        x: animate ? cursorX : 0,
+        y: enableMotion ? scrollY : 0,
+        x: enableMotion ? cursorX : 0,
       }}
     >
       <motion.div
         style={{
-          y: animate ? cursorY : 0,
-          rotate: animate ? scrollRotate : 0,
+          y: enableMotion ? cursorY : 0,
+          rotate: enableMotion ? scrollRotate : 0,
         }}
         animate={
-          animate
+          enableLoop
             ? {
                 y: [0, -floatDistance, 0],
               }
             : { y: 0 }
         }
         transition={
-          animate
+          enableLoop
             ? {
                 y: {
                   repeat: Infinity,
@@ -134,6 +135,7 @@ const Ball = ({
 export default function FloatingBalls({ balls = [], animate = true }) {
   const prefersReducedMotion = useReducedMotion();
   const pointer = usePointer();
+  const pointerEnabled = pointer?.enabled ?? false;
   const fallbackPointerX = useMotionValue(0);
   const fallbackPointerY = useMotionValue(0);
   const pointerX = prefersReducedMotion
@@ -150,7 +152,8 @@ export default function FloatingBalls({ balls = [], animate = true }) {
   const pointerYSpring = useSpring(pointerY, pointerSpringConfig);
 
   const ballsToRender = balls.length > 0 ? balls : defaultBalls;
-  const shouldAnimate = animate && !prefersReducedMotion;
+  const enableMotion = animate && !prefersReducedMotion;
+  const enableLoop = enableMotion && pointerEnabled;
 
   return (
     <>
@@ -160,7 +163,8 @@ export default function FloatingBalls({ balls = [], animate = true }) {
           scrollYProgress={scrollYProgress}
           pointerX={pointerXSpring}
           pointerY={pointerYSpring}
-          animate={shouldAnimate}
+          enableMotion={enableMotion}
+          enableLoop={enableLoop}
           {...ball}
         />
       ))}

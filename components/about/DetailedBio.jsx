@@ -161,7 +161,7 @@ export default function DetailedBio() {
                 </p>
               </motion.div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {highlights.map((highlight, index) => {
                   const Icon = highlight.icon;
                   return (

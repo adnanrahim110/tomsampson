@@ -1,6 +1,7 @@
 "use client";
 
 import useInViewport from "@/components/hooks/useInViewport";
+import useIsMobile from "@/components/hooks/useIsMobile";
 import { usePointer } from "@/components/providers/PointerProvider";
 import { DividerLine } from "@/components/ui/editorial";
 import {
@@ -13,13 +14,7 @@ import {
 } from "motion/react";
 import { useRef } from "react";
 
-export default function QuoteBreak({ quote, attribution, context }) {
-  const prefersReducedMotion = useReducedMotion();
-  const sectionRef = useRef(null);
-  const isInView = useInViewport(sectionRef, {
-    rootMargin: "200px 0px",
-    threshold: 0.1,
-  });
+function AnimatedQuoteMark({ sectionRef, prefersReducedMotion, isInView }) {
   const pointer = usePointer();
   const fallbackPointerX = useMotionValue(0);
   const pointerX =
@@ -33,7 +28,11 @@ export default function QuoteBreak({ quote, attribution, context }) {
   });
 
   const quoteY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const quoteScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+  const quoteScale = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [0.8, 1, 0.8],
+  );
   const quoteOpacity = useTransform(
     scrollYProgress,
     [0, 0.3, 0.7, 1],
@@ -47,25 +46,55 @@ export default function QuoteBreak({ quote, attribution, context }) {
   );
 
   return (
+    <motion.div
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-crimson text-[40rem] leading-none text-primary-200/50 pointer-events-none select-none hidden md:block"
+      style={
+        prefersReducedMotion || !isInView
+          ? {}
+          : {
+              y: quoteY,
+              scale: quoteScale,
+              opacity: quoteOpacity,
+              rotate: quoteRotate,
+            }
+      }
+    >
+      "
+    </motion.div>
+  );
+}
+
+export default function QuoteBreak({ quote, attribution, context }) {
+  const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const sectionRef = useRef(null);
+  const isInView = useInViewport(sectionRef, {
+    rootMargin: "200px 0px",
+    threshold: 0.1,
+  });
+
+  return (
     <section
       ref={sectionRef}
       className="relative bg-gradient-to-br from-primary-50 via-white to-primary-50 paper-texture editorial-spacing-md overflow-hidden"
     >
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-crimson text-[40rem] leading-none text-primary-200/50 pointer-events-none select-none"
-        style={
-          prefersReducedMotion || !isInView
-            ? {}
-            : {
-                y: quoteY,
-                scale: quoteScale,
-                opacity: quoteOpacity,
-                rotate: quoteRotate,
-              }
-        }
-      >
+      {!isMobile && !prefersReducedMotion && (
+        <AnimatedQuoteMark
+          sectionRef={sectionRef}
+          prefersReducedMotion={prefersReducedMotion}
+          isInView={isInView}
+        />
+      )}
+
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-crimson text-[18rem] sm:text-[24rem] leading-none text-primary-200/40 pointer-events-none select-none md:hidden">
         "
-      </motion.div>
+      </div>
+
+      {prefersReducedMotion && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-crimson text-[40rem] leading-none text-primary-200/40 pointer-events-none select-none hidden md:block">
+          "
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 relative">
         <motion.div

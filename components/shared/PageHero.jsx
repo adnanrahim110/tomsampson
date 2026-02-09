@@ -1,5 +1,6 @@
 "use client";
 
+import useIsMobile from "@/components/hooks/useIsMobile";
 import { cn } from "@/libs/cn";
 import { ChevronDown } from "lucide-react";
 import {
@@ -18,6 +19,7 @@ export default function PageHero({
   compact = false,
 }) {
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -48,8 +50,8 @@ export default function PageHero({
       className={cn(
         "relative flex items-center justify-center overflow-hidden bg-linear-to-br from-primary-700 via-primary-600 to-primary-800",
         compact
-          ? "pt-32 pb-16 md:pt-40 md:pb-20"
-          : "pt-40 pb-24 md:pt-48 md:pb-32",
+          ? "pt-28 sm:pt-32 pb-14 sm:pb-16 md:pt-40 md:pb-20"
+          : "pt-32 sm:pt-40 pb-20 sm:pb-24 md:pt-48 md:pb-32",
         className,
       )}
     >
@@ -67,10 +69,11 @@ export default function PageHero({
       </div>
 
       {!prefersReducedMotion &&
+        !isMobile &&
         floatingElements.map((el, index) => (
           <motion.div
             key={index}
-            className="absolute pointer-events-none"
+            className="absolute pointer-events-none hidden md:block"
             style={{ left: el.x, top: el.y }}
             initial={{ y: 0, rotate: 0 }}
             animate={{
@@ -91,17 +94,12 @@ export default function PageHero({
           </motion.div>
         ))}
 
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/10" />
-        <div className="absolute right-[8%] top-0 bottom-0 w-px bg-white/10" />
-        <div className="absolute left-0 right-0 bottom-0 h-px bg-white/10" />
-      </div>
-
       {!prefersReducedMotion &&
+        !isMobile &&
         [1, 2, 3, 4, 5].map((i) => (
           <motion.div
             key={`dot-${i}`}
-            className="absolute w-2 h-2 bg-white/30"
+            className="absolute w-2 h-2 bg-white/30 hidden md:block"
             style={{
               left: `${15 + i * 18}%`,
               top: `${20 + (i % 3) * 25}%`,
@@ -119,7 +117,7 @@ export default function PageHero({
         ))}
 
       <motion.div
-        style={prefersReducedMotion ? {} : { opacity, y }}
+        style={prefersReducedMotion || isMobile ? {} : { opacity, y }}
         className="relative z-10 text-center max-w-4xl mx-auto px-6 sm:px-12 lg:px-16"
       >
         <motion.div

@@ -184,7 +184,7 @@ export default function DetailedBookInfo() {
                         pageCurl
                         className="group h-full transition-all duration-300 border-secondary-200 hover:border-primary-300 hover:shadow-xl hover:shadow-secondary-300/30 hover:-translate-y-1"
                       >
-                        <div className="relative p-8 h-full">
+                        <div className="relative p-6 sm:p-8 h-full">
                           <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary-500/40 transition-colors duration-300 group-hover:bg-primary-500/70" />
 
                           <span

@@ -1,6 +1,7 @@
 "use client";
 
 import { FloatingBalls } from "@/components/effects";
+import useMediaQuery from "@/components/hooks/useMediaQuery";
 import Button from "@/components/ui/Button";
 import { Book3D } from "@/components/ui/editorial";
 import MagneticElement from "@/components/ui/MagneticElement";
@@ -16,6 +17,7 @@ import { forwardRef } from "react";
 
 const Hero = forwardRef(function Hero(props, ref) {
   const prefersReducedMotion = useReducedMotion();
+  const isLgUp = useMediaQuery("(min-width: 1024px)");
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -32,17 +34,16 @@ const Hero = forwardRef(function Hero(props, ref) {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-cream via-primary-50/30 to-cream paper-texture"
+      className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-cream via-primary-50/30 to-cream paper-texture"
     >
-      {/* Subtle gradient overlay for vibrancy */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-100/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-r from-transparent via-primary-100/20 to-transparent pointer-events-none" />
 
       <motion.div
         initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none max-lg:hidden"
       >
         <FloatingBalls
           balls={[
@@ -79,12 +80,14 @@ const Hero = forwardRef(function Hero(props, ref) {
 
       <motion.div
         style={
-          prefersReducedMotion ? {} : { opacity: contentOpacity, y: contentY }
+          prefersReducedMotion || !isLgUp
+            ? {}
+            : { opacity: contentOpacity, y: contentY }
         }
-        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-38 pb-20"
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-32 sm:pt-38 pb-16 sm:pb-20"
       >
         <div className="grid lg:grid-cols-[320px_auto] gap-8 lg:gap-40 items-center min-h-[70vh]">
-          <div className="w-64 sm:w-72 lg:w-80">
+          <div className="w-full sm:w-72 lg:w-80 mx-auto lg:mx-0">
             <Book3D
               coverImage={bookInfo.coverImage}
               title={bookInfo.title}

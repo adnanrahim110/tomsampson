@@ -166,7 +166,7 @@ export default function ContactForm({
             transition={{ duration: 0.5, delay: 0.2 }}
             onSubmit={handleSubmit}
             className={cn(
-              "bg-cream border border-secondary-200 p-8 md:p-10",
+              "bg-cream border border-secondary-200 p-5 md:p-10",
               showInfo ? "lg:col-span-7" : "",
             )}
           >

@@ -1,5 +1,6 @@
 "use client";
 
+import useIsMobile from "@/components/hooks/useIsMobile";
 import useInViewport from "@/components/hooks/useInViewport";
 import { DividerLine, EditorialCard } from "@/components/ui/editorial";
 import { testimonials } from "@/constants";
@@ -37,7 +38,7 @@ function TestimonialsPlaceholder() {
         </button>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-16">
         {items.map((testimonial, index) => (
           <EditorialCard
             key={testimonial.id}
@@ -48,12 +49,12 @@ function TestimonialsPlaceholder() {
               index === 0 && "border-primary-300",
             )}
           >
-            <div className="p-8">
+            <div className="p-6 sm:p-8">
               <span className="block font-crimson text-6xl text-primary-400 leading-none mb-4">
                 "
               </span>
 
-              <blockquote className="font-crimson text-xl text-secondary-700 leading-relaxed italic">
+              <blockquote className="font-crimson text-lg sm:text-xl text-secondary-700 leading-relaxed italic">
                 {testimonial.quote}
               </blockquote>
 
@@ -99,6 +100,7 @@ const TestimonialsCarousel = dynamic(() => import("./TestimonialsCarousel"), {
 
 export default function Testimonials() {
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   const sectionRef = useRef(null);
   const isInView = useInViewport(sectionRef, {
     rootMargin: "400px 0px",
@@ -141,7 +143,7 @@ export default function Testimonials() {
           <TestimonialsCarousel
             testimonials={testimonials}
             prefersReducedMotion={prefersReducedMotion}
-            autoplayEnabled={enableLoopAnimations}
+            autoplayEnabled={enableLoopAnimations && !isMobile}
             dividerClassName={dividerClassName}
           />
         ) : (

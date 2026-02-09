@@ -104,7 +104,7 @@ const AboutAuthor = forwardRef(function AboutAuthor({ headingRef }, ref) {
               whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-white/20"
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 py-10 sm:py-12 border-y border-white/20"
             >
               {authorBio.stats.map((stat, index) => (
                 <StatBlock

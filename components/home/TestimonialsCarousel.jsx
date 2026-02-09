@@ -17,10 +17,12 @@ const swiperBreakpoints = {
   768: {
     slidesPerView: 2,
     centeredSlides: false,
+    spaceBetween: 32,
   },
   1024: {
     slidesPerView: 3,
     centeredSlides: false,
+    spaceBetween: 32,
   },
 };
 
@@ -64,7 +66,7 @@ export default function TestimonialsCarousel({
 
       <Swiper
         modules={swiperModules}
-        spaceBetween={32}
+        spaceBetween={16}
         slidesPerView={1}
         centeredSlides={true}
         loop={true}
@@ -97,12 +99,12 @@ export default function TestimonialsCarousel({
                     isActive && "border-primary-400",
                   )}
                 >
-                  <div className="p-8">
+                  <div className="p-6 sm:p-8">
                     <span className="block font-crimson text-6xl text-primary-300 leading-none mb-4">
                       "
                     </span>
 
-                    <blockquote className="font-crimson text-xl text-secondary-700 leading-relaxed italic">
+                    <blockquote className="font-crimson text-lg sm:text-xl text-secondary-700 leading-relaxed italic">
                       {testimonial.quote}
                     </blockquote>
 

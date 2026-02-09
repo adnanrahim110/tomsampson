@@ -13,7 +13,7 @@ export default function PullQuote({
   return (
     <blockquote
       className={cn(
-        "relative my-12 px-8 md:px-12",
+        "relative my-10 sm:my-12 px-4 sm:px-8 md:px-12",
         variant === "centered" && "text-center",
         variant === "sidebar" && "border-l-4 border-primary-500 pl-6",
         className,

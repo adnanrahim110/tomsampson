@@ -12,7 +12,11 @@ export default function SmoothScroll({ children }) {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    if (prefersReducedMotion) {
+    const isTouchDevice = window.matchMedia("(any-pointer: coarse)").matches;
+    const isSmallScreen = window.matchMedia("(max-width: 767px)").matches;
+
+    // Keep mobile scrolling native + battery-friendly
+    if (prefersReducedMotion || isTouchDevice || isSmallScreen) {
       return;
     }
 
@@ -29,15 +33,17 @@ export default function SmoothScroll({ children }) {
     });
 
     // Animation frame loop
+    let rafId = null;
     function raf(time) {
       lenisRef.current?.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Cleanup
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
       lenisRef.current?.destroy();
       lenisRef.current = null;
     };
