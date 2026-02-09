@@ -43,11 +43,11 @@ export default function ContactForm({
   return (
     <section
       id="contact"
-      className="relative bg-paper paper-texture editorial-spacing-md"
+      className="relative bg-linear-to-b from-white via-primary-50/30 to-white paper-texture editorial-spacing-md"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
-        <div className="absolute right-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
+        <div className="absolute left-[8%] top-0 bottom-0 w-px bg-primary-200/40" />
+        <div className="absolute right-[8%] top-0 bottom-0 w-px bg-primary-200/40" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
@@ -58,7 +58,7 @@ export default function ContactForm({
           transition={{ duration: 0.6 }}
           className={centered ? "text-center mb-16" : "mb-16"}
         >
-          <span className="inline-block font-crimson text-xs tracking-[0.4em] uppercase text-secondary-500 mb-4">
+          <span className="inline-block font-crimson text-xs tracking-[0.4em] uppercase text-primary-600 mb-4 font-semibold">
             Get in Touch
           </span>
           <h2 className="font-crimson text-4xl md:text-5xl font-bold text-secondary-900 mb-4">
@@ -71,9 +71,9 @@ export default function ContactForm({
               centered && "justify-center",
             )}
           >
-            <span className="w-16 h-px bg-primary-400" />
-            <span className="w-2 h-2 bg-primary-500 rotate-45" />
-            <span className="w-16 h-px bg-primary-400" />
+            <span className="w-16 h-0.5 bg-primary-500" />
+            <span className="w-2.5 h-2.5 bg-primary-500 rotate-45" />
+            <span className="w-16 h-0.5 bg-primary-500" />
           </div>
         </motion.div>
 
@@ -94,9 +94,9 @@ export default function ContactForm({
               <div className="space-y-6">
                 <a
                   href={`mailto:${contactDetails.email}`}
-                  className="flex items-start gap-5 p-5 bg-parchment border border-secondary-200 hover:border-primary-400 transition-colors duration-300 group"
+                  className="flex items-start gap-5 p-5 bg-white border border-secondary-200 hover:border-primary-500 hover:bg-primary-50/50 transition-all duration-300 group"
                 >
-                  <span className="p-3 bg-cream border border-secondary-200 text-primary-600 group-hover:bg-primary-600 group-hover:text-cream group-hover:border-primary-600 transition-all duration-300">
+                  <span className="p-3 bg-primary-50 border border-primary-200 text-primary-600 group-hover:bg-primary-600 group-hover:text-white group-hover:border-primary-600 transition-all duration-300">
                     <ContactIcon.email className="w-5 h-5" />
                   </span>
                   <div>
@@ -111,9 +111,9 @@ export default function ContactForm({
 
                 <a
                   href={`tel:${contactDetails.phone.replace(/\s/g, "")}`}
-                  className="flex items-start gap-5 p-5 bg-parchment border border-secondary-200 hover:border-primary-400 transition-colors duration-300 group"
+                  className="flex items-start gap-5 p-5 bg-white border border-secondary-200 hover:border-primary-500 hover:bg-primary-50/50 transition-all duration-300 group"
                 >
-                  <span className="p-3 bg-cream border border-secondary-200 text-primary-600 group-hover:bg-primary-600 group-hover:text-cream group-hover:border-primary-600 transition-all duration-300">
+                  <span className="p-3 bg-primary-50 border border-primary-200 text-primary-600 group-hover:bg-primary-600 group-hover:text-white group-hover:border-primary-600 transition-all duration-300">
                     <ContactIcon.phone className="w-5 h-5" />
                   </span>
                   <div>

@@ -8,7 +8,10 @@ export default function ChapterHeading({
   subtitle,
   className,
   align = "left",
+  variant = "default",
 }) {
+  const isDark = variant === "dark";
+
   return (
     <header
       className={cn(
@@ -19,15 +22,30 @@ export default function ChapterHeading({
       )}
     >
       {number && (
-        <span className="block font-crimson text-sm tracking-[0.3em] uppercase text-primary-600 mb-3">
+        <span
+          className={cn(
+            "block font-crimson text-sm tracking-[0.3em] uppercase mb-3 font-semibold",
+            isDark ? "text-white/80" : "text-primary-500",
+          )}
+        >
           Chapter {number}
         </span>
       )}
-      <h2 className="font-crimson text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-900 leading-none">
+      <h2
+        className={cn(
+          "font-crimson text-4xl md:text-5xl lg:text-6xl font-bold leading-none",
+          isDark ? "text-white" : "text-secondary-900",
+        )}
+      >
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 font-crimson text-xl md:text-2xl italic text-secondary-500">
+        <p
+          className={cn(
+            "mt-4 font-crimson text-xl md:text-2xl italic",
+            isDark ? "text-white/70" : "text-secondary-500",
+          )}
+        >
           {subtitle}
         </p>
       )}
@@ -42,9 +60,24 @@ export default function ChapterHeading({
                 : "flex-start",
         }}
       >
-        <span className="block w-16 h-px bg-primary-500" />
-        <span className="block w-2 h-2 rounded-full bg-primary-500" />
-        <span className="block w-16 h-px bg-primary-500" />
+        <span
+          className={cn(
+            "block w-16 h-0.5",
+            isDark ? "bg-white/50" : "bg-primary-500",
+          )}
+        />
+        <span
+          className={cn(
+            "block w-2.5 h-2.5 rotate-45",
+            isDark ? "bg-white/70" : "bg-primary-500",
+          )}
+        />
+        <span
+          className={cn(
+            "block w-16 h-0.5",
+            isDark ? "bg-white/50" : "bg-primary-500",
+          )}
+        />
       </div>
     </header>
   );

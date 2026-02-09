@@ -46,7 +46,7 @@ export default function TestimonialsCarousel({
       <div className="hidden md:flex absolute -left-2 top-1/2 -translate-y-1/2 z-10">
         <button
           onClick={() => swiperRef.current?.slidePrev()}
-          className="w-12 h-12 border border-secondary-300 bg-paper hover:bg-parchment hover:border-primary-400 transition-all duration-300 flex items-center justify-center group"
+          className="w-12 h-12 border border-secondary-300 bg-white hover:bg-primary-50 hover:border-primary-500 transition-all duration-300 flex items-center justify-center group"
           aria-label="Previous testimonial"
         >
           <ChevronLeft className="w-5 h-5 text-secondary-500 group-hover:text-primary-600 transition-colors" />
@@ -55,7 +55,7 @@ export default function TestimonialsCarousel({
       <div className="hidden md:flex absolute -right-2 top-1/2 -translate-y-1/2 z-10">
         <button
           onClick={() => swiperRef.current?.slideNext()}
-          className="w-12 h-12 border border-secondary-300 bg-paper hover:bg-parchment hover:border-primary-400 transition-all duration-300 flex items-center justify-center group"
+          className="w-12 h-12 border border-secondary-300 bg-white hover:bg-primary-50 hover:border-primary-500 transition-all duration-300 flex items-center justify-center group"
           aria-label="Next testimonial"
         >
           <ChevronRight className="w-5 h-5 text-secondary-500 group-hover:text-primary-600 transition-colors" />
@@ -94,7 +94,7 @@ export default function TestimonialsCarousel({
                   pageCurl
                   className={cn(
                     "h-full transition-all duration-500",
-                    isActive && "border-primary-300",
+                    isActive && "border-primary-400",
                   )}
                 >
                   <div className="p-8">

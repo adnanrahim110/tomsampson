@@ -49,10 +49,10 @@ export default function QuoteBreak({ quote, attribution, context }) {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-parchment paper-texture editorial-spacing-md overflow-hidden"
+      className="relative bg-gradient-to-br from-primary-50 via-white to-primary-50 paper-texture editorial-spacing-md overflow-hidden"
     >
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-crimson text-[40rem] leading-none text-secondary-200 pointer-events-none select-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-crimson text-[40rem] leading-none text-primary-200/50 pointer-events-none select-none"
         style={
           prefersReducedMotion || !isInView
             ? {}

@@ -43,11 +43,10 @@ export default function CTA({
       ref={sectionRef}
       className={cn(
         "relative editorial-spacing-md overflow-hidden",
-        "bg-primary-700 paper-texture paper-texture-dark",
+        "bg-linear-to-br from-primary-700 via-primary-600 to-primary-800 paper-texture paper-texture-dark",
         className,
       )}
     >
-      {/* Parallax background texture */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{ y: bgY }}
@@ -61,7 +60,6 @@ export default function CTA({
         />
       </motion.div>
 
-      {/* Floating tennis balls */}
       <motion.div
         className="absolute right-[10%] top-[20%] w-16 h-16 pointer-events-none hidden lg:block"
         style={{ y: ballY }}
@@ -117,7 +115,6 @@ export default function CTA({
         </motion.div>
       </motion.div>
 
-      {/* Corner ornaments */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-cream/20" />
         <div className="absolute top-8 right-8 w-16 h-16 border-t-2 border-r-2 border-cream/20" />
@@ -171,7 +168,7 @@ export default function CTA({
               href={buttonLink}
               variant="secondary"
               size="lg"
-              className="bg-cream text-primary-800 hover:bg-paper border-none shadow-xl"
+              className="bg-white text-primary-700 hover:bg-primary-50 border-none font-bold"
             >
               {buttonText}
             </Button>

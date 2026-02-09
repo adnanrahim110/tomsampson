@@ -35,10 +35,10 @@ export default function DetailedBookInfo() {
   const descriptionParagraphs = bookInfo.fullDescription.split("\n\n");
 
   return (
-    <section className="relative bg-paper paper-texture">
+    <section className="relative bg-gradient-to-br from-white via-primary-50/30 to-white paper-texture">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
-        <div className="absolute right-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
+        <div className="absolute left-[8%] top-0 bottom-0 w-px bg-primary-200/40" />
+        <div className="absolute right-[8%] top-0 bottom-0 w-px bg-primary-200/40" />
       </div>
 
       <div className="editorial-spacing-md">
@@ -120,13 +120,13 @@ export default function DetailedBookInfo() {
         </div>
       </div>
 
-      <div className="editorial-spacing-md bg-parchment paper-texture relative overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-px bg-secondary-300" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-secondary-300" />
+      <div className="editorial-spacing-md bg-gradient-to-b from-primary-50/50 via-white to-primary-50/50 paper-texture relative overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-px bg-primary-200" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-primary-200" />
 
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute left-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
-          <div className="absolute right-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
+          <div className="absolute left-[8%] top-0 bottom-0 w-px bg-primary-200/40" />
+          <div className="absolute right-[8%] top-0 bottom-0 w-px bg-primary-200/40" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 relative">
@@ -139,11 +139,11 @@ export default function DetailedBookInfo() {
               className="lg:col-span-4 lg:sticky lg:top-32 text-center lg:text-left"
             >
               <div className="flex items-center justify-center lg:justify-start gap-4 mb-6">
-                <span className="w-12 h-px bg-secondary-300" />
-                <span className="font-crimson text-xs tracking-[0.35em] uppercase text-secondary-500">
+                <span className="w-12 h-px bg-primary-400" />
+                <span className="font-crimson text-xs tracking-[0.35em] uppercase text-primary-600 font-semibold">
                   What You Will Learn
                 </span>
-                <span className="w-12 h-px bg-secondary-300" />
+                <span className="w-12 h-px bg-primary-400" />
               </div>
 
               <h2 className="font-crimson text-3xl md:text-4xl font-bold text-secondary-900">
@@ -170,8 +170,12 @@ export default function DetailedBookInfo() {
                   return (
                     <motion.div
                       key={topic.title}
-                      initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
-                      whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                      initial={
+                        prefersReducedMotion ? {} : { opacity: 0, y: 30 }
+                      }
+                      whileInView={
+                        prefersReducedMotion ? {} : { opacity: 1, y: 0 }
+                      }
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.08 }}
                     >

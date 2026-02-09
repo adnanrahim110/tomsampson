@@ -61,10 +61,10 @@ export default function MobileDrawer({ isOpen, onClose }) {
                         href={link.href}
                         onClick={onClose}
                         className={cn(
-                          "block py-3 px-4 rounded-lg text-lg font-medium transition-all duration-300",
+                          "block py-3 px-4 text-lg font-medium transition-all duration-300",
                           pathname === link.href
-                            ? "bg-primary-50 text-primary-600"
-                            : "text-secondary-700 hover:bg-secondary-50 hover:text-primary-600",
+                            ? "bg-primary-100 text-primary-700 border-l-4 border-primary-500"
+                            : "text-secondary-700 hover:bg-primary-50 hover:text-primary-600",
                         )}
                       >
                         {link.name}
@@ -88,7 +88,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 text-secondary-500 hover:text-primary-600 hover:bg-primary-50 rounded-full transition-all duration-300"
+                        className="p-2 text-secondary-500 hover:text-primary-600 hover:bg-primary-100 transition-all duration-300"
                         aria-label={social.name}
                       >
                         <Icon className="w-5 h-5" />

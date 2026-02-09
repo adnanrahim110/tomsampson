@@ -32,9 +32,9 @@ export default function Textarea({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         className={cn(
-          "peer w-full px-4 py-3 pt-6 bg-paper border outline-none transition-all duration-300 resize-none font-open",
-          "border-secondary-300 focus:border-primary-500",
-          "focus:bg-cream",
+          "peer w-full px-4 py-3 pt-6 bg-white border outline-none transition-all duration-300 resize-none font-open",
+          "border-secondary-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-100",
+          "focus:bg-primary-50/30",
           error && "border-red-500 focus:border-red-500",
           textareaClassName,
         )}
@@ -43,8 +43,8 @@ export default function Textarea({
       <label
         htmlFor={name}
         className={cn(
-          "absolute left-4 transition-all duration-300 pointer-events-none bg-paper px-1 font-crimson",
-          "text-secondary-500 peer-focus:text-primary-700 peer-focus:bg-cream",
+          "absolute left-4 transition-all duration-300 pointer-events-none bg-white px-1 font-crimson",
+          "text-secondary-500 peer-focus:text-primary-600 peer-focus:bg-primary-50/30",
           isFocused || hasValue
             ? "top-2 text-xs font-medium tracking-wide"
             : "top-6 text-base",

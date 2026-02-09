@@ -7,13 +7,13 @@ import Link from "next/link";
 
 const variants = {
   primary:
-    "bg-primary-700 text-cream border-2 border-primary-700 hover:bg-primary-800 hover:border-primary-800 shadow-md shadow-primary-900/10",
+    "bg-primary-600 text-white border-2 border-primary-600 hover:bg-primary-700 hover:border-primary-700",
   secondary:
-    "bg-parchment text-secondary-800 border-2 border-secondary-300 hover:bg-paper hover:border-secondary-400",
+    "bg-secondary-100 text-secondary-800 border-2 border-secondary-300 hover:bg-secondary-200 hover:border-secondary-400",
   outline:
-    "bg-transparent border-2 border-primary-600 text-primary-700 hover:bg-primary-50 hover:border-primary-700",
+    "bg-transparent border-2 border-primary-500 text-primary-800 hover:bg-primary-50 hover:border-primary-600",
   ghost:
-    "bg-transparent text-primary-700 hover:text-primary-800 border-b-2 border-transparent hover:border-primary-400 rounded-none !px-0",
+    "bg-transparent text-primary-600 hover:text-primary-700 border-b-2 border-transparent hover:border-primary-400 !px-0",
 };
 
 const sizes = {

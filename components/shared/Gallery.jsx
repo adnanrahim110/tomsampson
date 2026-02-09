@@ -39,9 +39,7 @@ export default function Gallery({
 
   return (
     <>
-      <section className="relative bg-parchment editorial-spacing-md">
-        <div className="absolute inset-x-0 top-0 h-px bg-secondary-300" />
-
+      <section className="relative bg-linear-to-b from-primary-50/50 via-white to-primary-50/50 editorial-spacing-md">
         <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
           <motion.div
             initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
@@ -58,45 +56,60 @@ export default function Gallery({
             />
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {galleryImages.map((image, index) => (
-              <motion.div
-                key={image.id}
-                initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
-                whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative cursor-pointer"
-                onClick={() => openLightbox(index)}
-              >
-                <div className="relative bg-cream p-3 border border-secondary-200 hover:border-primary-400 transition-all duration-300">
-                  <span className="absolute -top-1 -left-1 w-3 h-3 border-l border-t border-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <span className="absolute -top-1 -right-1 w-3 h-3 border-r border-t border-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <span className="absolute -bottom-1 -left-1 w-3 h-3 border-l border-b border-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <span className="absolute -bottom-1 -right-1 w-3 h-3 border-r border-b border-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[300px]">
+            {galleryImages.map((image, index) => {
+              const pattern = index % 6;
+              const isLarge = pattern === 0;
+              const isTall = pattern === 3 || pattern === 2;
+              const isWide = pattern === 4;
 
-                  <div className="relative aspect-4/3 overflow-hidden">
+              return (
+                <motion.div
+                  key={image.id}
+                  initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
+                  whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
+                  className={`group relative cursor-pointer overflow-hidden ${
+                    isLarge
+                      ? "col-span-2 row-span-2"
+                      : isTall
+                        ? "row-span-2"
+                        : isWide
+                          ? "col-span-2"
+                          : ""
+                  }`}
+                  onClick={() => openLightbox(index)}
+                >
+                  <div className="relative w-full h-full border border-secondary-200 hover:border-primary-500 transition-all duration-300">
+                    <span className="absolute -top-px -left-px w-4 h-4 border-l-2 border-t-2 border-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                    <span className="absolute -top-px -right-px w-4 h-4 border-r-2 border-t-2 border-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                    <span className="absolute -bottom-px -left-px w-4 h-4 border-l-2 border-b-2 border-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                    <span className="absolute -bottom-px -right-px w-4 h-4 border-r-2 border-b-2 border-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
-                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes={
+                        isLarge
+                          ? "(max-width: 768px) 100vw, 50vw"
+                          : "(max-width: 768px) 50vw, 25vw"
+                      }
                     />
 
-                    <div className="absolute inset-0 bg-primary-900/0 group-hover:bg-primary-900/30 transition-all duration-300 flex items-center justify-center">
-                      <span className="px-5 py-2 bg-cream/95 text-secondary-900 font-crimson text-sm tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                        View
-                      </span>
+                    <div className="absolute inset-0 bg-primary-900/0 group-hover:bg-primary-900/20 transition-all duration-300" />
+
+                    <div className="absolute bottom-0 left-0 right-0 p-3 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <p className="font-crimson text-sm text-white italic truncate">
+                        {image.alt || `Image ${index + 1}`}
+                      </p>
                     </div>
                   </div>
-                </div>
-
-                <p className="mt-3 text-center font-crimson text-sm italic text-secondary-500">
-                  {image.alt || `Image ${index + 1}`}
-                </p>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
 
           <DividerLine variant="ornament" className="mt-16 mx-auto max-w-sm" />
@@ -108,7 +121,7 @@ export default function Gallery({
           initial={prefersReducedMotion ? {} : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={prefersReducedMotion ? {} : { opacity: 0 }}
-          className="fixed inset-0 z-100 bg-secondary-950/98 flex items-center justify-center"
+          className="fixed inset-0 z-100 bg-secondary-950/98 flex items-center justify-center h-screen"
           onClick={closeLightbox}
         >
           <button
@@ -146,16 +159,17 @@ export default function Gallery({
             initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="relative max-w-4xl max-h-[80vh] w-full mx-8"
+            className="relative flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="bg-cream p-4 md:p-6">
-              <div className="relative aspect-4/3 overflow-hidden">
+              <div className="relative h-[75vh] w-auto">
                 <Image
                   src={galleryImages[selectedImage].src}
                   alt={galleryImages[selectedImage].alt}
-                  fill
-                  className="object-cover"
+                  width={1200}
+                  height={900}
+                  className="h-full w-auto object-contain"
                   sizes="(max-width: 1024px) 100vw, 896px"
                 />
               </div>

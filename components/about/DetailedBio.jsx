@@ -40,10 +40,10 @@ export default function DetailedBio() {
   const bioParagraphs = authorBio.fullBio.split("\n\n");
 
   return (
-    <section className="relative bg-paper paper-texture editorial-spacing-md">
+    <section className="relative bg-gradient-to-br from-white via-primary-50/30 to-white paper-texture editorial-spacing-md">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
-        <div className="absolute right-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
+        <div className="absolute left-[8%] top-0 bottom-0 w-px bg-primary-200/40" />
+        <div className="absolute right-[8%] top-0 bottom-0 w-px bg-primary-200/40" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
@@ -123,9 +123,9 @@ export default function DetailedBio() {
                     }
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
-                    className="flex items-start gap-3 p-4 bg-parchment border border-secondary-200"
+                    className="flex items-start gap-3 p-4 bg-white border border-secondary-200 hover:border-primary-400 hover:bg-primary-50/50 transition-all duration-300"
                   >
-                    <span className="shrink-0 mt-0.5 w-6 h-6 border border-primary-400 text-primary-600 flex items-center justify-center font-crimson text-sm">
+                    <span className="shrink-0 mt-0.5 w-6 h-6 border border-primary-500 text-primary-600 flex items-center justify-center font-crimson text-sm font-semibold bg-primary-50">
                       {index + 1}
                     </span>
                     <span className="text-secondary-700">{achievement}</span>

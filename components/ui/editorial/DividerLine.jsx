@@ -28,7 +28,7 @@ export default function DividerLine({ variant = "simple", className = "" }) {
         )}
       >
         <span className="flex-1 h-px bg-secondary-300" />
-        <span className="text-primary-400 text-2xl">❧</span>
+        <span className="text-primary-500 text-2xl">❧</span>
         <span className="flex-1 h-px bg-secondary-300" />
       </div>
     );

@@ -1,36 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm Terracotta Primary - Editorial warmth */
-  --color-primary-50: #fdf8f6;
-  --color-primary-100: #f9ebe4;
-  --color-primary-200: #f4d5c7;
-  --color-primary-300: #ebb89f;
-  --color-primary-400: #de8e6c;
-  --color-primary-500: #c9694a;
-  --color-primary-600: #b5533a;
-  --color-primary-700: #974431;
-  --color-primary-800: #7b3a2c;
-  --color-primary-900: #653429;
-  --color-primary-950: #361813;
+  /* Tennis Green Primary - Vibrant Court Green */
+  --color-primary-50: #f0fdf4;
+  --color-primary-100: #dcfce7;
+  --color-primary-200: #bbf7d0;
+  --color-primary-300: #86efac;
+  --color-primary-400: #4ade80;
+  --color-primary-500: #22c55e;
+  --color-primary-600: #16a34a;
+  --color-primary-700: #15803d;
+  --color-primary-800: #166534;
+  --color-primary-900: #14532d;
+  --color-primary-950: #052e16;
 
-  /* Warm Taupe Secondary - Book/Paper feel */
-  --color-secondary-50: #faf9f7;
-  --color-secondary-100: #f3f1ed;
-  --color-secondary-200: #e6e2da;
-  --color-secondary-300: #d4cec1;
-  --color-secondary-400: #b8af9d;
-  --color-secondary-500: #9a8f7b;
-  --color-secondary-600: #7d7264;
-  --color-secondary-700: #665d52;
-  --color-secondary-800: #554e46;
-  --color-secondary-900: #49443d;
-  --color-secondary-950: #272420;
+  /* Deep Navy Secondary - Premium Pairing */
+  --color-secondary-50: #f8fafc;
+  --color-secondary-100: #f1f5f9;
+  --color-secondary-200: #e2e8f0;
+  --color-secondary-300: #cbd5e1;
+  --color-secondary-400: #94a3b8;
+  --color-secondary-500: #64748b;
+  --color-secondary-600: #475569;
+  --color-secondary-700: #334155;
+  --color-secondary-800: #1e293b;
+  --color-secondary-900: #0f172a;
+  --color-secondary-950: #020617;
 
-  /* Cream/Paper tones */
-  --color-cream: #fdfbf7;
-  --color-paper: #f8f5f0;
-  --color-parchment: #f3ede4;
+  /* Accent Gold for premium touches */
+  --color-gold: #f59e0b;
+  --color-gold-light: #fbbf24;
+  --color-gold-dark: #d97706;
+
+  /* Light Background Tones */
+  --color-cream: #fefce8;
+  --color-paper: #fef9c3;
+  --color-parchment: #fef3c7;
 
   --font-crimson: "Crimson Pro", serif;
   --font-open: "Open Sans", sans-serif;
@@ -90,7 +95,18 @@
     line-height: 0.8;
     padding-right: 0.5rem;
     padding-top: 0.25rem;
-    color: var(--color-primary-700);
+    color: var(--color-primary-600);
+  }
+
+  .drop-cap-dark::first-letter {
+    float: left;
+    font-family: var(--font-crimson);
+    font-size: 4.5rem;
+    font-weight: 600;
+    line-height: 0.8;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+    color: white;
   }
 
   /* Pull quote styling */
@@ -98,7 +114,7 @@
     position: relative;
     font-family: var(--font-crimson);
     font-style: italic;
-    color: var(--color-secondary-700);
+    color: var(--color-secondary-600);
   }
 
   .pull-quote::before {
@@ -108,7 +124,26 @@
     top: -1rem;
     font-size: 6rem;
     font-family: var(--font-crimson);
-    color: var(--color-primary-200);
+    color: var(--color-primary-300);
+    line-height: 1;
+    font-style: normal;
+  }
+
+  .pull-quote-dark {
+    position: relative;
+    font-family: var(--font-crimson);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .pull-quote-dark::before {
+    content: "\201C";
+    position: absolute;
+    left: -1rem;
+    top: -1rem;
+    font-size: 6rem;
+    font-family: var(--font-crimson);
+    color: rgba(255, 255, 255, 0.3);
     line-height: 1;
     font-style: normal;
   }

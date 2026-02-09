@@ -56,7 +56,7 @@ export default function AboutBook() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-secondary-900 paper-texture paper-texture-dark editorial-spacing-md overflow-hidden"
+      className="relative bg-gradient-to-br from-secondary-900 via-secondary-950 to-secondary-900 paper-texture paper-texture-dark editorial-spacing-md overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 relative">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -85,10 +85,10 @@ export default function AboutBook() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block font-open text-xs tracking-[0.3em] uppercase text-primary-400 mb-4">
+              <span className="inline-block font-open text-xs tracking-[0.3em] uppercase text-primary-400 mb-4 font-semibold">
                 Now Available
               </span>
-              <h2 className="font-crimson text-4xl md:text-5xl lg:text-6xl font-bold text-cream leading-tight mb-4">
+              <h2 className="font-crimson text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
                 {bookInfo.title}
               </h2>
               <p className="font-crimson text-xl md:text-2xl italic text-secondary-300 mb-8">
@@ -124,7 +124,7 @@ export default function AboutBook() {
                 href="/book"
                 variant="outline"
                 showArrow
-                className="border-secondary-600 text-secondary-300 hover:border-primary-500 hover:text-primary-400"
+                className="border-primary-500 text-primary-400 hover:border-primary-400 hover:bg-primary-500/10 hover:text-primary-300"
               >
                 Read an Excerpt
               </Button>

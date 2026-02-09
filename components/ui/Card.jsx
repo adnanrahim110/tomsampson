@@ -27,9 +27,9 @@ export default function Card({
       transition={{ duration: 0.5 }}
       whileHover={hover && !prefersReducedMotion ? { y: -4 } : {}}
       className={cn(
-        "bg-white rounded-2xl border border-secondary-100",
-        "shadow-lg transition-all duration-300",
-        hover && "hover:shadow-2xl hover:border-primary-200",
+        "bg-white border border-secondary-200",
+        "transition-all duration-300",
+        hover && "hover:border-primary-400 hover:bg-primary-50/30",
         paddingSizes[padding],
         className,
       )}

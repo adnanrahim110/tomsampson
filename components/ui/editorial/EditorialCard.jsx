@@ -11,10 +11,10 @@ export default function EditorialCard({
   return (
     <article
       className={cn(
-        "relative bg-paper border border-secondary-200 overflow-hidden",
-        variant === "elevated" && "shadow-lg shadow-secondary-200/50",
-        variant === "flat" && "shadow-none",
-        variant === "inset" && "shadow-inner bg-parchment",
+        "relative bg-white border border-secondary-200 overflow-hidden",
+        variant === "elevated" && "border-l-4 border-l-primary-500",
+        variant === "flat" && "",
+        variant === "inset" && "bg-secondary-50",
         pageCurl && "page-curl",
         className,
       )}

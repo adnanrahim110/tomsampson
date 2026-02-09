@@ -32,9 +32,9 @@ export default function Input({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         className={cn(
-          "peer w-full px-4 py-3 pt-6 bg-paper border outline-none transition-all duration-300 font-open",
-          "border-secondary-300 focus:border-primary-500",
-          "focus:bg-cream",
+          "peer w-full px-4 py-3 pt-6 bg-white border outline-none transition-all duration-300 font-open",
+          "border-secondary-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-100",
+          "focus:bg-primary-50/30",
           error && "border-red-500 focus:border-red-500",
           inputClassName,
         )}
@@ -44,7 +44,7 @@ export default function Input({
         htmlFor={name}
         className={cn(
           "absolute left-4 transition-all duration-300 pointer-events-none font-crimson",
-          "text-secondary-500 peer-focus:text-primary-700",
+          "text-secondary-500 peer-focus:text-primary-600",
           isFocused || hasValue
             ? "top-2 text-xs font-medium tracking-wide"
             : "top-1/2 -translate-y-1/2 text-base",

@@ -8,6 +8,8 @@ export default function PullQuote({
   className,
   variant = "default",
 }) {
+  const isDark = variant === "dark";
+
   return (
     <blockquote
       className={cn(
@@ -19,7 +21,8 @@ export default function PullQuote({
     >
       <div
         className={cn(
-          "pull-quote text-2xl md:text-3xl lg:text-4xl leading-snug",
+          isDark ? "pull-quote-dark" : "pull-quote",
+          "text-2xl md:text-3xl lg:text-4xl leading-snug",
           variant === "centered"
             ? "before:left-1/2 before:-translate-x-1/2"
             : "",
@@ -28,7 +31,12 @@ export default function PullQuote({
         {children}
       </div>
       {attribution && (
-        <footer className="mt-6 font-open text-sm tracking-widest uppercase text-secondary-500">
+        <footer
+          className={cn(
+            "mt-6 font-open text-sm tracking-widest uppercase",
+            isDark ? "text-white/60" : "text-secondary-500",
+          )}
+        >
           — {attribution}
         </footer>
       )}

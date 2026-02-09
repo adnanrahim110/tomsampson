@@ -32,8 +32,11 @@ const Hero = forwardRef(function Hero(props, ref) {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center overflow-hidden bg-cream paper-texture"
+      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-cream via-primary-50/30 to-cream paper-texture"
     >
+      {/* Subtle gradient overlay for vibrancy */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-100/20 to-transparent pointer-events-none" />
+
       <motion.div
         initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -115,8 +118,8 @@ const Hero = forwardRef(function Hero(props, ref) {
               className="flex items-center gap-4 mb-5 origin-left"
             >
               <span className="w-16 h-0.5 bg-primary-500" />
-              <span className="font-crimson text-primary-400 text-2xl">✦</span>
-              <span className="w-8 h-0.5 bg-primary-300" />
+              <span className="font-crimson text-gold text-2xl">✦</span>
+              <span className="w-8 h-0.5 bg-primary-400" />
             </motion.div>
 
             <motion.p
@@ -167,7 +170,7 @@ const Hero = forwardRef(function Hero(props, ref) {
               transition={{ duration: 0.6, delay: 1 }}
               className="mt-12 flex items-center gap-4"
             >
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary-200">
+              <div className="w-12 h-12 overflow-hidden border-2 border-primary-400">
                 <Image
                   src="/imgs/author/2.jpg"
                   alt={authorBio.name}
@@ -180,7 +183,7 @@ const Hero = forwardRef(function Hero(props, ref) {
                 <p className="font-crimson text-sm font-semibold text-secondary-800">
                   {authorBio.name}
                 </p>
-                <p className="text-xs text-secondary-500">{authorBio.title}</p>
+                <p className="text-xs text-primary-600">{authorBio.title}</p>
               </div>
             </motion.div>
           </div>

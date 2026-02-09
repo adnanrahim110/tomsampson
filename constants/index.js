@@ -184,8 +184,8 @@ export const footerLinks = {
 
 export const galleryImages = [
   { id: 1, src: "/imgs/author/1.jpg", alt: "Tom Sampson - Tennis Career" },
-  { id: 2, src: "/imgs/author/2.jpg", alt: "Tom Sampson - Coaching" },
   { id: 3, src: "/imgs/author/3.jpg", alt: "Tom Sampson - Training" },
+  { id: 2, src: "/imgs/author/2.jpg", alt: "Tom Sampson - Coaching" },
   { id: 4, src: "/imgs/author/4.jpg", alt: "Tom Sampson - Competition" },
   { id: 5, src: "/imgs/author/5.jpg", alt: "Tom Sampson - Professional" },
   { id: 6, src: "/imgs/author/6.jpg", alt: "Tom Sampson - Author" },

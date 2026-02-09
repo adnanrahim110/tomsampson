@@ -19,7 +19,7 @@ export default function Footer() {
   const ContactIcon = contactDetails.icons;
 
   return (
-    <footer className="relative bg-secondary-900 paper-texture paper-texture-dark text-cream overflow-hidden">
+    <footer className="relative bg-secondary-950 paper-texture paper-texture-dark text-white overflow-hidden">
       <div className="h-px bg-secondary-700" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-20 pb-12">
@@ -32,10 +32,10 @@ export default function Footer() {
             className="lg:col-span-4"
           >
             <Link href="/" className="inline-block group mb-6">
-              <span className="block font-crimson text-3xl font-bold text-cream group-hover:text-primary-300 transition-colors duration-300">
+              <span className="block font-crimson text-3xl font-bold text-white group-hover:text-primary-400 transition-colors duration-300">
                 Tom Sampson
               </span>
-              <span className="block text-[10px] tracking-[0.3em] uppercase text-secondary-400 mt-1">
+              <span className="block text-[10px] tracking-[0.3em] uppercase text-primary-400/70 mt-1">
                 Author & Tennis Coach
               </span>
             </Link>
@@ -53,7 +53,7 @@ export default function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 border border-secondary-600 hover:border-primary-500 hover:bg-primary-500/10 flex items-center justify-center transition-all duration-300 group"
+                      className="w-10 h-10 border border-secondary-700 hover:border-primary-500 hover:bg-primary-500/20 flex items-center justify-center transition-all duration-300 group"
                       aria-label={social.name}
                     >
                       <Icon className="w-4 h-4 text-secondary-400 group-hover:text-primary-400 transition-colors" />
@@ -136,7 +136,7 @@ export default function Footer() {
             <Button
               href="/"
               size="sm"
-              className="bg-primary-600 hover:bg-primary-700 border-primary-600 hover:border-primary-700"
+              className="bg-primary-500 hover:bg-primary-600 border-primary-500 hover:border-primary-600"
             >
               Order Your Copy
             </Button>

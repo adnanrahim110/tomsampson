@@ -49,7 +49,7 @@ function TestimonialsPlaceholder() {
             )}
           >
             <div className="p-8">
-              <span className="block font-crimson text-6xl text-primary-300 leading-none mb-4">
+              <span className="block font-crimson text-6xl text-primary-400 leading-none mb-4">
                 "
               </span>
 
@@ -60,7 +60,7 @@ function TestimonialsPlaceholder() {
               <DividerLine variant="simple" className={dividerClassName} />
 
               <footer className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-parchment border border-secondary-200 flex items-center justify-center">
+                <div className="w-12 h-12 bg-primary-100 border border-primary-300 flex items-center justify-center">
                   <span className="font-crimson text-xl font-semibold text-primary-600">
                     {testimonial.author.charAt(0)}
                   </span>
@@ -109,11 +109,11 @@ export default function Testimonials() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-cream paper-texture editorial-spacing-md overflow-hidden"
+      className="relative bg-gradient-to-b from-white via-primary-50/50 to-white paper-texture editorial-spacing-md overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
-        <div className="absolute right-[8%] top-0 bottom-0 w-px bg-secondary-200/30" />
+        <div className="absolute left-[8%] top-0 bottom-0 w-px bg-primary-200/40" />
+        <div className="absolute right-[8%] top-0 bottom-0 w-px bg-primary-200/40" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
@@ -124,7 +124,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block font-crimson text-xs tracking-[0.4em] uppercase text-secondary-500 mb-4">
+          <span className="inline-block font-crimson text-xs tracking-[0.4em] uppercase text-primary-600 mb-4 font-semibold">
             Praise for the Book
           </span>
           <h2 className="font-crimson text-4xl md:text-5xl font-bold text-secondary-900">
